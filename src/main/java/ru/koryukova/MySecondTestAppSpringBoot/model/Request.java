@@ -16,12 +16,19 @@ public class Request {
   @NotBlank
   private String uid;
 
+  @NotBlank
   private String operationUid;
+
   private String systemName;
+
+  @NotBlank
   private String systemTime;
+
   private String source;
 
+  @NotBlank
   private int communicationId;
+
   private int templateId;
   private int productCode;
   private int smsCode;
