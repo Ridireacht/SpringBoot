@@ -2,10 +2,12 @@ package ru.koryukova.MySecondTestAppSpringBoot.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +18,7 @@ import ru.koryukova.MySecondTestAppSpringBoot.service.ValidationService;
 
 
 @RestController
+@Validated
 public class MyController {
 
   private final ValidationService validationService;
@@ -26,7 +29,7 @@ public class MyController {
   }
 
   @PostMapping(value = "/feedback")
-  public ResponseEntity<Response> feedback(@RequestBody Request request, BindingResult bindingResult) {
+  public ResponseEntity<Response> feedback(@Valid @RequestBody Request request, BindingResult bindingResult) {
 
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
