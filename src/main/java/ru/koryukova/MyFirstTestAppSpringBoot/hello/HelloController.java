@@ -8,21 +8,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 public class HelloController {
 
   private List<String> stringList = new ArrayList<>();
   private Map<Integer, String> integerStringMap = new HashMap<>();
 
-  @GetMapping("/hello")
-  public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-    return String.format("Hello %s!", name);
-  }
 
   @GetMapping("/update-array")
   public String updateArrayList(@RequestParam String s) {
+    if (stringList.isEmpty()) {
+      stringList = new ArrayList<>();
+    }
+
     stringList.add(s);
-    return "Value '" + s + "' added to the ArrayList.";
+
+    return "Значение '" + s + "' добавлено в список.";
   }
 
   @GetMapping("/show-array")
@@ -32,8 +34,12 @@ public class HelloController {
 
   @GetMapping("/update-map")
   public String updateHashMap(@RequestParam String s) {
+    if (integerStringMap.isEmpty()) {
+      integerStringMap = new HashMap<>();
+    }
+
     integerStringMap.put(integerStringMap.size() + 1, s);
-    return "Value '" + s + "' added to the HashMap.";
+    return "Значение '" + s + "' добавлено в хэш-мап.";
   }
 
   @GetMapping("/show-map")
@@ -45,6 +51,7 @@ public class HelloController {
   public String showAllLength() {
     int arrayListSize = stringList.size();
     int hashMapSize = integerStringMap.size();
-    return "ArrayList size: " + arrayListSize + ", HashMap size: " + hashMapSize;
+
+    return "Размер списка: " + arrayListSize + ", размер хэш-мапа: " + hashMapSize;
   }
 }
