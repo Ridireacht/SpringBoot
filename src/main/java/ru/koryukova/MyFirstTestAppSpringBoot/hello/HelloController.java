@@ -15,6 +15,11 @@ public class HelloController {
   private List<String> stringList = new ArrayList<>();
   private Map<Integer, String> integerStringMap = new HashMap<>();
 
+  
+  @GetMapping("/hello")
+  public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
+    return String.format("Hello %s!", name);
+  }
 
   @GetMapping("/update-array")
   public String updateArrayList(@RequestParam String s) {
