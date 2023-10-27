@@ -1,4 +1,4 @@
-package ru.arkhipov.MyFirstTestAppSpringBoot;
+package ru.koryukova.MyFirstTestAppSpringBoot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

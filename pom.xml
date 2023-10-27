@@ -8,7 +8,7 @@
 		<version>2.7.18-SNAPSHOT</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>ru.arkhipov</groupId>
+	<groupId>ru.koryukova</groupId>
 	<artifactId>MyFirstTestAppSpringBoot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>MyFirstTestAppSpringBoot</name>
@@ -19,19 +19,13 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>6.0.0</version>
 		</dependency>
 	</dependencies>
 
