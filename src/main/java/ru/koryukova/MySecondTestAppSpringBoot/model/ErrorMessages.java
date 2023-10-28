@@ -19,4 +19,9 @@ public enum ErrorMessages {
   public String getName() {
     return description;
   }
+
+  @Override
+  public String toString() {
+    return description;
+  }
 }

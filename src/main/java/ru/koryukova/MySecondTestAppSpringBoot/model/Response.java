@@ -14,4 +14,17 @@ public class Response {
   private Codes code;
   private ErrorCodes errorCode;
   private ErrorMessages errorMessage;
+
+
+  @Override
+  public String toString() {
+    return "{" +
+        "uid ='" + uid + '\'' +
+        ", operationUid='" + operationUid +'\'' +
+        ", systemTime='" + systemTime +'\'' +
+        ", code='" + code +'\'' +
+        ", errorCode='" + errorCode +'\'' +
+        ", errorMessage='" + errorMessage +'\'' +
+        '}';
+  }
 }
