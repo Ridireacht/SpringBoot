@@ -15,6 +15,7 @@ import ru.koryukova.MySecondTestAppSpringBoot.exception.ValidationFailedExceptio
 import ru.koryukova.MySecondTestAppSpringBoot.model.Request;
 import ru.koryukova.MySecondTestAppSpringBoot.model.Response;
 import ru.koryukova.MySecondTestAppSpringBoot.service.ValidationService;
+import ru.koryukova.MySecondTestAppSpringBoot.util.DateTimeUtil;
 
 
 @RestController
@@ -30,12 +31,10 @@ public class MyController {
   @PostMapping(value = "/feedback")
   public ResponseEntity<Response> feedback(@Valid @RequestBody Request request, BindingResult bindingResult) {
 
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-
     Response response = Response.builder()
         .uid(request.getUid())
         .operationUid(request.getOperationUid())
-        .systemTime(simpleDateFormat.format(new Date()))
+        .systemTime(DateTimeUtil.getCustomFormat().format(new Date()))
         .code("success")
         .errorCode("")
         .errorMessage("")
