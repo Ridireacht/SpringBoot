@@ -21,7 +21,7 @@ public class Request {
   @NotBlank(message = "operationUid must not be blank")
   private String operationUid;
 
-  private String systemName;
+  private Systems systemName;
 
   @NotBlank(message = "systemTime must not be blank")
   private String systemTime;
