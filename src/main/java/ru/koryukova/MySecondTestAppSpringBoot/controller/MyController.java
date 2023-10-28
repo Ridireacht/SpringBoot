@@ -46,28 +46,45 @@ public class MyController {
         .errorMessage(ErrorMessages.EMPTY)
         .build();
 
+    log.info("initial response: {}", response);
+
     try {
       if (response.getUid().equals("123"))
         throw new UnsupportedCodeException("uid must not be 123!");
-    } catch (UnsupportedCodeException e) {
+    }
+
+    catch (UnsupportedCodeException e) {
       response.setCode(Codes.FAILED);
       response.setErrorCode(ErrorCodes.UNSUPPORTED_EXCEPTION);
       response.setErrorMessage(ErrorMessages.UNKNOWN);
+
+      log.info("error detected, response modified: {}", response);
+
       return new ResponseEntity<>(response, HttpStatus.NOT_ACCEPTABLE);
     }
 
 
     try {
       validationService.isValid(bindingResult);
-    } catch (ValidationFailedException e) {
+    }
+
+    catch (ValidationFailedException e) {
       response.setCode(Codes.FAILED);
       response.setErrorCode(ErrorCodes.VALIDATION_EXCEPTION);
       response.setErrorMessage(ErrorMessages.VALIDATION);
+
+      log.info("error detected, response modified: {}", response);
+
       return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-    } catch (Exception e) {
+    }
+
+    catch (Exception e) {
       response.setCode(Codes.FAILED);
       response.setErrorCode(ErrorCodes.UNKNOWN_EXCEPTION);
       response.setErrorMessage(ErrorMessages.UNKNOWN);
+
+      log.info("error detected, response modified: {}", response);
+
       return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
