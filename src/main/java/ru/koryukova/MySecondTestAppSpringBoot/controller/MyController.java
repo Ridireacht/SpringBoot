@@ -1,12 +1,14 @@
 package ru.koryukova.MySecondTestAppSpringBoot.controller;
 
 import java.util.Date;
+import java.util.List;
 import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,6 +56,8 @@ public class MyController {
     }
 
     catch (UnsupportedCodeException e) {
+      log.error("Unsupported exception happened");
+
       response.setCode(Codes.FAILED);
       response.setErrorCode(ErrorCodes.UNSUPPORTED_EXCEPTION);
       response.setErrorMessage(ErrorMessages.UNKNOWN);
@@ -69,6 +73,15 @@ public class MyController {
     }
 
     catch (ValidationFailedException e) {
+      log.error("Validation exception happened.");
+
+      List<FieldError> errors = bindingResult.getFieldErrors();
+      for (FieldError error : errors) {
+        String fieldName = error.getField();
+        String errorMessage = error.getDefaultMessage();
+        log.error("Field: " + fieldName + ", error: " + errorMessage);
+      }
+
       response.setCode(Codes.FAILED);
       response.setErrorCode(ErrorCodes.VALIDATION_EXCEPTION);
       response.setErrorMessage(ErrorMessages.VALIDATION);
@@ -79,6 +92,8 @@ public class MyController {
     }
 
     catch (Exception e) {
+      log.error("Unknown exception happened");
+
       response.setCode(Codes.FAILED);
       response.setErrorCode(ErrorCodes.UNKNOWN_EXCEPTION);
       response.setErrorMessage(ErrorMessages.UNKNOWN);
