@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.koryukova.MySecondTestAppSpringBoot.exception.UnsupportedCodeException;
 import ru.koryukova.MySecondTestAppSpringBoot.exception.ValidationFailedException;
+import ru.koryukova.MySecondTestAppSpringBoot.model.Codes;
+import ru.koryukova.MySecondTestAppSpringBoot.model.ErrorCodes;
+import ru.koryukova.MySecondTestAppSpringBoot.model.ErrorMessages;
 import ru.koryukova.MySecondTestAppSpringBoot.model.Request;
 import ru.koryukova.MySecondTestAppSpringBoot.model.Response;
 import ru.koryukova.MySecondTestAppSpringBoot.service.ValidationService;
@@ -35,18 +38,18 @@ public class MyController {
         .uid(request.getUid())
         .operationUid(request.getOperationUid())
         .systemTime(DateTimeUtil.getCustomFormat().format(new Date()))
-        .code("success")
-        .errorCode("")
-        .errorMessage("")
+        .code(Codes.SUCCESS)
+        .errorCode(ErrorCodes.EMPTY)
+        .errorMessage(ErrorMessages.EMPTY)
         .build();
 
     try {
       if (response.getUid().equals("123"))
         throw new UnsupportedCodeException("uid must not be 123!");
     } catch (UnsupportedCodeException e) {
-      response.setCode("failed");
-      response.setErrorCode("UnsupportedCodeException");
-      response.setErrorMessage("Ошибка - uid равен 123!");
+      response.setCode(Codes.FAILED);
+      response.setErrorCode(ErrorCodes.UNSUPPORTED_EXCEPTION);
+      response.setErrorMessage(ErrorMessages.UNKNOWN);
       return new ResponseEntity<>(response, HttpStatus.NOT_ACCEPTABLE);
     }
 
@@ -54,14 +57,14 @@ public class MyController {
     try {
       validationService.isValid(bindingResult);
     } catch (ValidationFailedException e) {
-      response.setCode("failed");
-      response.setErrorCode("ValidationException");
-      response.setErrorMessage("Ошибка валидации");
+      response.setCode(Codes.FAILED);
+      response.setErrorCode(ErrorCodes.VALIDATION_EXCEPTION);
+      response.setErrorMessage(ErrorMessages.VALIDATION);
       return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     } catch (Exception e) {
-      response.setCode("failed");
-      response.setErrorCode("UnknownException");
-      response.setErrorMessage("Произошла непредвиденная ошибка");
+      response.setCode(Codes.FAILED);
+      response.setErrorCode(ErrorCodes.UNKNOWN_EXCEPTION);
+      response.setErrorMessage(ErrorMessages.UNKNOWN);
       return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
