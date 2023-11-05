@@ -1,7 +1,7 @@
-package ru.koryukova.MySecondTestAppSpringBoot.service;
+package ru.koryukova.FirstService.service;
 
 import org.springframework.stereotype.Service;
-import ru.koryukova.MySecondTestAppSpringBoot.model.Request;
+import ru.koryukova.FirstService.model.Request;
 
 
 @Service

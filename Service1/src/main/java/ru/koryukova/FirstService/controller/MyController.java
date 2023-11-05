@@ -1,4 +1,4 @@
-package ru.koryukova.MySecondTestAppSpringBoot.controller;
+package ru.koryukova.FirstService.controller;
 
 import java.util.Date;
 import java.util.List;
@@ -12,17 +12,17 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import ru.koryukova.MySecondTestAppSpringBoot.exception.UnsupportedCodeException;
-import ru.koryukova.MySecondTestAppSpringBoot.exception.ValidationFailedException;
-import ru.koryukova.MySecondTestAppSpringBoot.model.Codes;
-import ru.koryukova.MySecondTestAppSpringBoot.model.ErrorCodes;
-import ru.koryukova.MySecondTestAppSpringBoot.model.ErrorMessages;
-import ru.koryukova.MySecondTestAppSpringBoot.model.Request;
-import ru.koryukova.MySecondTestAppSpringBoot.model.Response;
-import ru.koryukova.MySecondTestAppSpringBoot.service.ModifyRequestService;
-import ru.koryukova.MySecondTestAppSpringBoot.service.ModifyResponseService;
-import ru.koryukova.MySecondTestAppSpringBoot.service.ValidationService;
-import ru.koryukova.MySecondTestAppSpringBoot.util.DateTimeUtil;
+import ru.koryukova.FirstService.exception.UnsupportedCodeException;
+import ru.koryukova.FirstService.exception.ValidationFailedException;
+import ru.koryukova.FirstService.model.Codes;
+import ru.koryukova.FirstService.model.ErrorCodes;
+import ru.koryukova.FirstService.model.ErrorMessages;
+import ru.koryukova.FirstService.model.Request;
+import ru.koryukova.FirstService.model.Response;
+import ru.koryukova.FirstService.service.ModifyRequestService;
+import ru.koryukova.FirstService.service.ModifyResponseService;
+import ru.koryukova.FirstService.service.ValidationService;
+import ru.koryukova.FirstService.util.DateTimeUtil;
 
 
 @Slf4j

@@ -1,4 +1,4 @@
-package ru.koryukova.MySecondTestAppSpringBoot.exception;
+package ru.koryukova.FirstService.exception;
 
 public class ValidationFailedException extends Exception {
 
