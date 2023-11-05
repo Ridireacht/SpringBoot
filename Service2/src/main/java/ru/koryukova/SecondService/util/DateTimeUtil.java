@@ -1,4 +1,4 @@
-package ru.koryukova.MySecondTestAppSpringBoot.util;
+package ru.koryukova.SecondService.util;
 
 import java.text.SimpleDateFormat;
 

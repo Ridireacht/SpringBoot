@@ -1,4 +1,4 @@
-package ru.koryukova.MySecondTestAppSpringBoot;
+package ru.koryukova.SecondService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

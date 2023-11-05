@@ -1,4 +1,4 @@
-package ru.koryukova.MySecondTestAppSpringBoot.exception;
+package ru.koryukova.SecondService.exception;
 
 public class UnsupportedCodeException extends Exception {
 

@@ -1,10 +1,10 @@
-package ru.koryukova.MySecondTestAppSpringBoot.service;
+package ru.koryukova.SecondService.service;
 
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import ru.koryukova.MySecondTestAppSpringBoot.model.Response;
-import ru.koryukova.MySecondTestAppSpringBoot.util.DateTimeUtil;
+import ru.koryukova.SecondService.model.Response;
+import ru.koryukova.SecondService.util.DateTimeUtil;
 
 @Service
 @Qualifier("ModifySystemTimeResponseService")

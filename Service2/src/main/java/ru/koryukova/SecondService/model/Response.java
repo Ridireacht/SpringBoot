@@ -1,4 +1,4 @@
-package ru.koryukova.MySecondTestAppSpringBoot.model;
+package ru.koryukova.SecondService.model;
 
 import lombok.Builder;
 import lombok.Data;

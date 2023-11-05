@@ -1,8 +1,8 @@
-package ru.koryukova.MySecondTestAppSpringBoot.service;
+package ru.koryukova.SecondService.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
-import ru.koryukova.MySecondTestAppSpringBoot.exception.ValidationFailedException;
+import ru.koryukova.SecondService.exception.ValidationFailedException;
 
 
 @Service
