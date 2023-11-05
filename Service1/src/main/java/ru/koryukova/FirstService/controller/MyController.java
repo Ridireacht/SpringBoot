@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -37,7 +38,8 @@ public class MyController {
 
   @Autowired
   public MyController(ValidationService validationService,
-      ModifyResponseService modifyResponseService, ModifyRequestService modifyRequestService) {
+      @Qualifier("ModifySystemTimeResponseService") ModifyResponseService modifyResponseService,
+      ModifyRequestService modifyRequestService) {
     this.validationService = validationService;
     this.modifyResponseService = modifyResponseService;
     this.modifyRequestService = modifyRequestService;
