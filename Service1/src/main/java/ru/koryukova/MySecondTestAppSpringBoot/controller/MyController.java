@@ -19,6 +19,8 @@ import ru.koryukova.MySecondTestAppSpringBoot.model.ErrorCodes;
 import ru.koryukova.MySecondTestAppSpringBoot.model.ErrorMessages;
 import ru.koryukova.MySecondTestAppSpringBoot.model.Request;
 import ru.koryukova.MySecondTestAppSpringBoot.model.Response;
+import ru.koryukova.MySecondTestAppSpringBoot.service.ModifyRequestService;
+import ru.koryukova.MySecondTestAppSpringBoot.service.ModifyResponseService;
 import ru.koryukova.MySecondTestAppSpringBoot.service.ValidationService;
 import ru.koryukova.MySecondTestAppSpringBoot.util.DateTimeUtil;
 
@@ -29,9 +31,16 @@ public class MyController {
 
   private final ValidationService validationService;
 
+  private final ModifyResponseService modifyResponseService;
+
+  private final ModifyRequestService modifyRequestService;
+
   @Autowired
-  public MyController(ValidationService validationService) {
+  public MyController(ValidationService validationService,
+      ModifyResponseService modifyResponseService, ModifyRequestService modifyRequestService) {
     this.validationService = validationService;
+    this.modifyResponseService = modifyResponseService;
+    this.modifyRequestService = modifyRequestService;
   }
 
   @PostMapping(value = "/feedback")
@@ -102,6 +111,9 @@ public class MyController {
 
       return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    modifyResponseService.modify(response);
+    modifyRequestService.modify(request);
 
     return new ResponseEntity<>(response, HttpStatus.OK);
   }
