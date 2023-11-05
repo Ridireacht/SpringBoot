@@ -117,6 +117,6 @@ public class MyController {
     modifyResponseService.modify(response);
     modifyRequestService.modify(request);
 
-    return new ResponseEntity<>(response, HttpStatus.OK);
+    return new ResponseEntity<>(modifyResponseService.modify(response), HttpStatus.OK);
   }
 }
