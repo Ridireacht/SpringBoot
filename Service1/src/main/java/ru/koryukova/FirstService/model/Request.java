@@ -28,6 +28,8 @@ public class Request {
 
   private String source;
 
+  private String position;
+
   @Min(value = 1, message = "communicationId must be at least 1")
   @Max(value = 100000, message = "communicationId must be at most 100000")
   private int communicationId;
@@ -35,6 +37,9 @@ public class Request {
   private int templateId;
   private int productCode;
   private int smsCode;
+  private int salary;
+  private int workDays;
+  private double bonus;
 
 
   @Override
@@ -45,6 +50,10 @@ public class Request {
         ", systemName='" + systemName +'\'' +
         ", systemTime='" + systemTime +'\'' +
         ", source='" + source +'\'' +
+        ", position='" + position +'\'' +
+        ", salary='" + salary +'\'' +
+        ", bonus='" + bonus +'\'' +
+        ", workDays='" + workDays +'\'' +
         ", communicationId=" + communicationId +
         ", templateId=" + templateId +
         ", productCode=" + productCode +

@@ -12,6 +12,7 @@ public class Response {
   private String operationUid;
   private String systemTime;
   private Codes code;
+  private Double annualBonus;
   private ErrorCodes errorCode;
   private ErrorMessages errorMessage;
 
@@ -23,6 +24,7 @@ public class Response {
         ", operationUid='" + operationUid +'\'' +
         ", systemTime='" + systemTime +'\'' +
         ", code='" + code +'\'' +
+        ", annualBonus='" + annualBonus +'\'' +
         ", errorCode='" + errorCode +'\'' +
         ", errorMessage='" + errorMessage +'\'' +
         '}';
