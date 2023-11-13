@@ -39,7 +39,7 @@ public class MyController {
   @Autowired
   public MyController(ValidationService validationService,
       @Qualifier("ModifySystemTimeResponseService") ModifyResponseService modifyResponseService,
-      ModifyRequestService modifyRequestService) {
+      @Qualifier("ModifySourceRequestService") ModifyRequestService modifyRequestService) {
     this.validationService = validationService;
     this.modifyResponseService = modifyResponseService;
     this.modifyRequestService = modifyRequestService;

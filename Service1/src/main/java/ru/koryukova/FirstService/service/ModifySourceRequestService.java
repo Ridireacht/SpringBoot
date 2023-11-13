@@ -10,12 +10,12 @@ import ru.koryukova.FirstService.model.Request;
 import ru.koryukova.FirstService.model.Systems;
 
 @Service
-@Qualifier("ModifySystemNameRequestService")
-public class ModifySystemNameRequestService implements ModifyRequestService {
+@Qualifier("ModifySourceRequestService")
+public class ModifySourceRequestService implements ModifyRequestService {
 
   @Override
   public void modify(Request request) {
-    request.setSystemName(Systems.SE1);
+    request.setSource("111");
 
     HttpEntity<Request> httpEntity = new HttpEntity<>(request);
 
