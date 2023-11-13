@@ -1,5 +1,7 @@
 package ru.koryukova.SecondService.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 import javax.validation.Valid;
@@ -38,6 +40,25 @@ public class MyController {
   public ResponseEntity<Response> feedback(@Valid @RequestBody Request request, BindingResult bindingResult) {
 
     log.info("request: {}", request);
+
+
+
+    long diffInMillies;
+
+    try {
+      Date date1 = DateTimeUtil.getCustomFormat().parse(request.getSystemTime());
+      Date date2 = new Date();
+
+      diffInMillies = Math.abs(date2.getTime() - date1.getTime());
+    }
+
+    catch (ParseException e) {
+      throw new RuntimeException(e);
+    }
+
+    log.info("time since sent: " + diffInMillies + " ms.");
+
+
 
     Response response = Response.builder()
         .uid(request.getUid())
