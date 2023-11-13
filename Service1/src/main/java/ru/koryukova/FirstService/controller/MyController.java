@@ -61,6 +61,8 @@ public class MyController {
 
     log.info("initial response: {}", response);
 
+
+
     try {
       if (response.getUid().equals("123"))
         throw new UnsupportedCodeException("uid must not be 123!");
@@ -77,6 +79,7 @@ public class MyController {
 
       return new ResponseEntity<>(response, HttpStatus.NOT_ACCEPTABLE);
     }
+
 
 
     try {
@@ -113,6 +116,7 @@ public class MyController {
 
       return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
 
     modifyResponseService.modify(response);
     modifyRequestService.modify(request);
