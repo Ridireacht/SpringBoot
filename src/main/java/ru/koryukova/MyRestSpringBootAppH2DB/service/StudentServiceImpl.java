@@ -2,10 +2,12 @@ package ru.koryukova.MyRestSpringBootAppH2DB.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.koryukova.MyRestSpringBootAppH2DB.dao.StudentDAO;
 import ru.koryukova.MyRestSpringBootAppH2DB.entity.Student;
 
+@Service
 public class StudentServiceImpl implements StudentService {
 
   @Autowired
