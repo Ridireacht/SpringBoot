@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.koryukova.MyRestSpringBootAppH2DB.dao.StudentDAO;
 import ru.koryukova.MyRestSpringBootAppH2DB.entity.Student;
+import ru.koryukova.MyRestSpringBootAppH2DB.response.StudentResponse;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -27,8 +28,15 @@ public class StudentServiceImpl implements StudentService {
 
   @Override
   @Transactional
-  public Student saveStudent(Student student) {
-    return studentDAO.saveStudent(student);
+  public StudentResponse saveStudent(Student student) {
+    Student savedStudent = studentDAO.saveStudent(student);
+
+    if (savedStudent != null) {
+      return new StudentResponse(savedStudent, true);
+    }
+
+    else
+      return new StudentResponse(new Student(), false);
   }
 
   @Override

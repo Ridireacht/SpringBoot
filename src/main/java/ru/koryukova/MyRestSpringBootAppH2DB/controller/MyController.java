@@ -1,6 +1,7 @@
 package ru.koryukova.MyRestSpringBootAppH2DB.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.koryukova.MyRestSpringBootAppH2DB.entity.Student;
+import ru.koryukova.MyRestSpringBootAppH2DB.response.StudentResponse;
 import ru.koryukova.MyRestSpringBootAppH2DB.service.StudentService;
 
 @RestController
@@ -21,25 +23,28 @@ public class MyController {
   private StudentService studentService;
 
   @GetMapping("/students")
-  public List<Student> showAllStudents() {
+  public List<StudentResponse> showAllStudents() {
     List<Student> allStudents = studentService.getAllStudents();
-    return allStudents;
+
+    return allStudents.stream()
+        .map(student -> new StudentResponse(student, true))
+        .collect(Collectors.toList());
   }
 
   @GetMapping("/students/{id}")
-  public Student getStudent(@PathVariable("id") int id) {
-    return studentService.getStudent(id);
+  public StudentResponse getStudent(@PathVariable("id") int id) {
+    Student student = studentService.getStudent(id);
+    return new StudentResponse(student, true);
   }
 
   @PostMapping("/students")
-  public Student saveStudent(@RequestBody Student student) {
+  public StudentResponse saveStudent(@RequestBody Student student) {
     return studentService.saveStudent(student);
   }
 
   @PutMapping("/students")
-  public Student updateStudent(@RequestBody Student student) {
-    studentService.saveStudent(student);
-    return student;
+  public StudentResponse updateStudent(@RequestBody Student student) {
+    return studentService.saveStudent(student);
   }
 
   @DeleteMapping("/students/{id}")

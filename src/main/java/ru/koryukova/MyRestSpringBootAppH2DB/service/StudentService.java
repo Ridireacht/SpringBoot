@@ -3,6 +3,7 @@ package ru.koryukova.MyRestSpringBootAppH2DB.service;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import ru.koryukova.MyRestSpringBootAppH2DB.entity.Student;
+import ru.koryukova.MyRestSpringBootAppH2DB.response.StudentResponse;
 
 @Service
 public interface StudentService {
@@ -11,7 +12,7 @@ public interface StudentService {
 
   Student getStudent(int id);
 
-  Student saveStudent(Student student);
+  StudentResponse saveStudent(Student student);
 
   void deleteStudent(int id);
 }
