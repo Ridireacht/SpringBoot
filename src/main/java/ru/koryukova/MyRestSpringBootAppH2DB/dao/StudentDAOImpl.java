@@ -1,10 +1,12 @@
 package ru.koryukova.MyRestSpringBootAppH2DB.dao;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import ru.koryukova.MyRestSpringBootAppH2DB.entity.Student;
 
 @Slf4j
 @Repository
